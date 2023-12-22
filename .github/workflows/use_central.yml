@@ -1,0 +1,15 @@
+name: Use Central Workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      file_path:
+        description: "Path to the text file"
+        required: true
+        default: "/config/test1.txt"
+
+jobs:
+  call-central-workflow:
+    uses: chickendining/composite-action-poc/.github/workflows/read_file.yml@main
+    with:
+      file_path: ${{ github.event.inputs.file_path }}
